@@ -1,21 +1,21 @@
 import React from "react";
 
-function NavBar() {
+function NavBar(props) {
   return (
     <ul className="nav nav-pills nav-justified">
       <li className="nav-item">
         <a className="nav-link active" href="#">
-          Clicky Game
+          ReStart
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">
-          Click an Image to score some points
+          Simpsons Memory Test
         </a>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">
-          score
+          Score: {props.currentScore} | Top Score: {props.highestScore}
         </a>
       </li>
     </ul>
