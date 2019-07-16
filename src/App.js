@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import NavBar from "./components/NavBar.js";
 import Jumbotron from "./components/Jumbotron.js";
@@ -12,10 +11,16 @@ class App extends React.Component {
     clickedCards: []
   };
 
-  keepScore = () => {
-    this.setState({ currentScore: this.state.currentScore + 1 });
+  keepScore = (event, image) => {
+    if (this.state.clickedCards.includes(image.id)) {
+      alert("Game Over");
+    } else {
+      this.setState({
+        currentScore: this.state.currentScore + 1,
+        clickedCards: [...this.state.clickedCards, image.id]
+      });
+    }
   };
-
   render() {
     return (
       <div className="App">
@@ -24,7 +29,7 @@ class App extends React.Component {
           highestScore={this.state.highestScore}
         />
         <Jumbotron />
-        <Game />
+        <Game keepScore={this.keepScore} />
       </div>
     );
   }
