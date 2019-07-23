@@ -14,13 +14,26 @@ class App extends React.Component {
   keepScore = (event, image) => {
     if (this.state.clickedCards.includes(image.id)) {
       alert("Game Over");
-    } else {
       this.setState({
+        currentScore: 0,
+        clickedCards: []
+      });
+    } else {
+      let highestScore = 0;
+      if (this.state.highestScore > this.state.currentScore + 1) {
+        highestScore = this.state.highestScore;
+      } else {
+        highestScore = this.state.currentScore + 1;
+      }
+
+      this.setState({
+        highestScore: highestScore,
         currentScore: this.state.currentScore + 1,
         clickedCards: [...this.state.clickedCards, image.id]
       });
     }
   };
+
   render() {
     return (
       <div className="App">

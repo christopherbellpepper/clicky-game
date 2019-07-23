@@ -10,6 +10,7 @@ function Game(props) {
           key={index}
           src={image.imgUrl}
           onClick={event => props.keepScore(event, image)}
+          alt={image.imgUrl}
         />
       ))}
     </div>
